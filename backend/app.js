@@ -1,18 +1,18 @@
-const express= require('express');
-const dotenv=require('dotenv');
+const express = require('express');
+const dotenv = require('dotenv');
 const app = express();
-const cors=require('cors');
-const connectDB=require('./db/db');
-const userRouter=require('./routes/user.routes');
-
+const cors = require('cors');
+const connectDB = require('./db/db');
+const userRouter = require('./routes/user.routes');
+const cookieParser = require('cookie-parser');
 dotenv.config();
 connectDB();
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
-app.use('/users',userRouter);
-app.get('/',(req,res)=>{
+app.use('/users', userRouter);
+app.get('/', (req, res) => {
     res.send('Hello World');
 });
 
